@@ -1,0 +1,20 @@
+{
+  "name": "wdiproject4",
+  "version": "1.0.0",
+  "description": "WDI Project 4 - Movie API Mashup",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/seangeleno/WDI19_Project4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/seangeleno/WDI19_Project4/issues"
+  },
+  "homepage": "https://github.com/seangeleno/WDI19_Project4#readme"
+}
