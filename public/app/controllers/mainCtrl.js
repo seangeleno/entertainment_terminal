@@ -19,5 +19,34 @@ angular.module('mainCtrl', [])
           mainCtrl.user = data.data
         })
     })
+      //function to handle login form
 
-  })
+      mainCtrl.doLogin  = function (){
+        mainCtrl.processing = true
+      }
+
+      // clear the Error
+      mainCtrl.error = ''
+
+      //if a user successfully logs in, redirect to the page
+      Auth.login(mainCtrl.loginData.username, mainCtrl.loginData.password)
+        .success(function(){
+          mainCtrl.processing = false
+          if ( data.success ){
+            $location.path('/users')
+          }
+          else {
+            mainCtrl.error = data.message
+          }
+      })
+      //function to handle logging out
+      mainCtrl.doLogout = function(){
+        Auth.logout()
+          //empty out user
+          mainCtrl.user = ''
+
+          //finally, redirect to the login screen
+          $location.path('/login')
+
+      }
+  });
