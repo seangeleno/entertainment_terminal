@@ -48,3 +48,5 @@ Story 1 -
 Story 2 -
 
 Story 3 -
+
+![My image](https://cloud.githubusercontent.com/assets/13446052/11792989/f643008e-a25d-11e5-9290-a613d9fd93b8.png)
