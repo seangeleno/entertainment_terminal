@@ -3,6 +3,7 @@ var express       = require('express') //this calls express
 ,   bodyParser    = require('body-parser')
 ,   morgan        = require('morgan') //used to see requests
 ,   mongoose      = require('mongoose') //provides Schemas and Active Record
+,   rotten        = require('rotten-api')("YOU_API_KEY")
 ,   config        = require('./config') // //importing file that has global environmental variables assigned
 ,   path          = require('path');
 
