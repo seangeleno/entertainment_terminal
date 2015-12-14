@@ -70,3 +70,16 @@ section.module.parallax-3 {
     font-size: 90px;
   }
 }
+
+/*NAV BAR*/
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  background: #333;
+  border-color: #333;
+}
+.fa-bars {
+  padding: 10px;
+  cursor: pointer;
+  user-select: none;
+}
