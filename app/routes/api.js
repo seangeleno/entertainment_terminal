@@ -1,10 +1,10 @@
 var bodyParser = require('body-parser')
 ,   User       = require('../models/user')
 ,   jwt        = require('jsonwebtoken')
-// ,   config     = require('../../config');
+// ,   config     = require('config/config.js');
 
 //super secret for creating tokens
-// var superSecret = config.secret;
+var superSecret = "super";
 
 module.exports = function(app, express) {
 
@@ -21,8 +21,10 @@ module.exports = function(app, express) {
       if (!user) {
         var sampleUser = new User();
 
-        sampleUser.name = 'test';
+        sampleUser.first_name = 'test';
+        sampleUser.last_name = 'test';
         sampleUser.username = 'test';
+        sampleUser.email = 'test';
         sampleUser.password = 'test';
 
         sampleUser.save();
@@ -116,7 +118,7 @@ module.exports = function(app, express) {
 
     } else {
       //if there is no token return HTTP response of 403 (access forbidden)
-      req.status(403).send({
+      res.status(403).send({
         success: false,
         message: 'No token provided.'
       });
@@ -132,8 +134,18 @@ module.exports = function(app, express) {
   });
 
   //on routes that end in /users
-  apiRouter.route('users')
+  apiRouter.route('/users')
+  //get all the users(acessed at GET http://localhost:3000/api/users)
+    .get(function(req, res){
+      console.log('get users')
+      User.find({}, function(err, users){
+        console.log(users);
+        if (err) res.send(err);
 
+        //return the users
+        res.json(users)
+      });
+    })
     //create a user (accessed at POST http://localhost:3000/users)
     .post(function(req, res){
 
@@ -158,16 +170,7 @@ module.exports = function(app, express) {
       });
     })
 
-    //get all the users(acessed at GET http://localhost:3000/api/users)
-    .get(function(req, res){
 
-      User.find({}, function(err, users){
-        if (err) res.send(err);
-
-        //return the users
-        res.json(users)
-      });
-    });
 
   //on routes that end in /users/:user_id
   apiRouter.route('/users/:user_id')
