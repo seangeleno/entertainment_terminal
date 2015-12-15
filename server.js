@@ -4,7 +4,7 @@ var express       = require('express') //this calls express
 ,   morgan        = require('morgan') //used to see requests
 ,   mongoose      = require('mongoose') //provides Schemas and Active Record
 // ,   rotten        = require('rotten-api')("YOU_API_KEY")
-,   config        = require('./config/config.js') // //importing file that has global environmental variables assigned
+,   port          = process.env.PORT || 3000
 ,   path          = require('path')
 ,   db            = 'mongodb://localhost/et';
 
@@ -43,10 +43,11 @@ app.use('/api', apiRoutes);
 //DA MAIN ROUTE
 //Send users to frontend
 //has to be registered after API routes
-app.get('*', function(req, res){ // any route that isn't API then load static index.html
-    res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
+app.get('/', function(req, res){ // any route that isn't API then load static index.html
+    res.sendFile(path.join(__dirname + '/public/app/views/html/landing_page.html'));
 });
 
 //SERVER STARTS HERE
-app.listen(config.port);
-console.log('BOOM SHAKALAKA: PORT ' + config.port + ' is up n running');
+app.listen(port, function(){
+console.log('BOOM SHAKALAKA: PORT ' + port + ' is up n running');
+})
