@@ -57,83 +57,12 @@
                     </div>
                 </div>
                 <div ng-controller='moviesController as moviesCtrl' class="row small-up-2 medium-up-3 large-up-4">
-                    <div class="column" ng-repeat=" poster in moviesCtrl.posters">
-                        <img class="thumbnail" ng-src="{{ poster }}">
-                        <h5>My Site</h5>
+                    <div class="column" ng-repeat="movie in moviesCtrl.movies">
+                      <img class="thumbnail" ng-src="{{movie.poster}}">
+                      <p>{{movie.title}}</p>
                     </div>
-                    <!-- <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div>
-                    <div class="column">
-                        <img class="thumbnail" src="http://placehold.it/550x550">
-                        <h5>My Site</h5>
-                    </div> -->
                 </div>
                 <hr>
-                <!-- <div class="row">
-                    <div class="medium-6 columns">
-                        <h3>Contact Me</h3>
-                        <p>Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim. Phasellus molestie magna non est bibendum non venenatis nisl tempor. Suspendisse dictum feugiat nisl ut dapibus. Mauris iaculis porttitor.</p>
-                        <ul class="menu">
-                            <li><a href="#">Dribbble</a>
-                            </li>
-                            <li><a href="#">Facebook</a>
-                            </li>
-                            <li><a href="#">Yo</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="medium-6 columns">
-                        <label>Name
-                            <input type="text" placeholder="Name">
-                        </label>
-                        <label>Email
-                            <input type="text" placeholder="Email">
-                        </label>
-                        <label>
-                            Message
-                            <textarea placeholder="holla at a designerd"></textarea>
-                        </label>
-                        <button class="button expanded">Submit</a>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -148,17 +77,27 @@
         function moviesControllerFunc ($http){
           var movieCtrl = this
           movieCtrl.posters = []
+          movieCtrl.titles = []
+          movieCtrl.movies = []
           $http({
             method: 'GET',
             url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/50/25/all/all'
           }).then(function successCallback(response) {
               // this callback will be called asynchronously
               // when the response is available
-              console.log(response);
+              // console.log(response);
               for (var i = 0; i < response.data.results.length; i++) {
-                movieCtrl.posters.push(response.data.results[i].poster_120x171)
-                console.log(response.data.results[i].rating);
-                console.log(response.data.results[i].poster_120x171);
+                // console.log(response.data.results[i].title)
+                var object = {}
+                object.poster = response.data.results[i].poster_120x171;
+                object.title = response.data.results[i].title;
+                // movieCtrl.posters.push(response.data.results[i].poster_120x171)
+                // movieCtrl.titles.push(response.data.results[i].title)
+                // console.log(movieCtrl.titles)
+                movieCtrl.movies.push(object);
+                // console.log(movieCtrl.movies)
+                // console.log(response.data.results[i].rating);
+                // console.log(response.data.results[i].poster_120x171);
               }
               // console.log(response.data.results);
 
