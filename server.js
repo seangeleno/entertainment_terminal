@@ -3,9 +3,10 @@ var express       = require('express') //this calls express
 ,   bodyParser    = require('body-parser')
 ,   morgan        = require('morgan') //used to see requests
 ,   mongoose      = require('mongoose') //provides Schemas and Active Record
-,   rotten        = require('rotten-api')("YOU_API_KEY")
-,   config        = require('./config') // //importing file that has global environmental variables assigned
-,   path          = require('path');
+// ,   rotten        = require('rotten-api')("YOU_API_KEY")
+,   config        = require('./config/config.js') // //importing file that has global environmental variables assigned
+,   path          = require('path')
+,   db            = 'mongodb://localhost/et';
 
 // App Configuration goes here!
 // use body parser so we can grab information from POST requests
@@ -25,7 +26,7 @@ app.use(morgan('dev'));
 
 //connect to our database ()
 
-mongoose.connect('mongodb://<seangeleno>:<generalassembly>@ds029595.mongolab.com:29595/entertainment_terminal', function(err){
+mongoose.connect(db, function(err){
   if(err) throw err
   console.log('Connected to MongoDB');
 })
