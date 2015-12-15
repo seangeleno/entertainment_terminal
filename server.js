@@ -25,7 +25,7 @@ app.use(morgan('dev'));
 
 //connect to our database ()
 
-mongoose.connect('mongodb://<seangeleno>:<generalassembly>@ds029595.mongolab.com:29595/entertainment_terminal', function(err){
+mongoose.connect('', function(err){
   if(err) throw err
   console.log('Connected to MongoDB');
 })
