@@ -1,3 +1,3 @@
-var port           = process.env.PORT || 3000;
+var superSecret = "super"
 
-module.exports = port;
+module.export = superSecret
