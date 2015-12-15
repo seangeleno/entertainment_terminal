@@ -7,9 +7,10 @@
     <title>Entertainment Terminal</title>
     <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
 </head>
 
-<body>
+<body ng-app="moviesApp">
     <div class="off-canvas-wrapper">
         <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
             <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left">
@@ -55,7 +56,7 @@
                         <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p>
                     </div>
                 </div>
-                <div class="row small-up-2 medium-up-3 large-up-4">
+                <div ng-controller='moviesController as moviesCtrl' class="row small-up-2 medium-up-3 large-up-4">
                     <div class="column">
                         <img class="thumbnail" src="http://placehold.it/550x550">
                         <h5>My Site</h5>
@@ -140,6 +141,24 @@
     <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
     <script>
         $(document).foundation();
+        angular.module("moviesApp", []);
+        angular.module("moviesApp")
+          .controller('moviesController', moviesControllerFunc)
+          .$inject = ['$http']
+        function moviesControllerFunc ($http){
+          $http({
+            method: 'GET',
+            url: 'https://api-public.guidebox.com/v1.43/US/Un0uCZa9plyuPPzwnCJh7lnvCClaRj/movie/50362/images/all'
+          }).then(function successCallback(response) {
+              // this callback will be called asynchronously
+              // when the response is available
+              console.log(response.data.results.thumbnails[0].medium.url);
+
+            }, function errorCallback(response) {
+              // called asynchronously if an error occurs
+              // or server returns response with an error status.
+            });
+        }
     </script>
 </body>
 
