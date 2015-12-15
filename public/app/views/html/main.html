@@ -148,11 +148,16 @@
         function moviesControllerFunc ($http){
           $http({
             method: 'GET',
-            url: 'https://api-public.guidebox.com/v1.43/US/Un0uCZa9plyuPPzwnCJh7lnvCClaRj/movie/50362/images/all'
+            url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/50/25/all/all'
           }).then(function successCallback(response) {
               // this callback will be called asynchronously
               // when the response is available
-              console.log(response.data.results.thumbnails[0].medium.url);
+              console.log(response);
+              for (var i = 0; i < response.data.results.length; i++) {
+                console.log(response.data.results[i].title);
+                console.log(response.data.results[i].poster_120x171);
+              }
+              // console.log(response.data.results);
 
             }, function errorCallback(response) {
               // called asynchronously if an error occurs
