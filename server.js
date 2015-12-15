@@ -26,6 +26,7 @@ app.use(morgan('dev'));
 
 //connect to our database ()
 
+
 mongoose.connect(db, function(err){
   if(err) throw err
   console.log('Connected to MongoDB');
