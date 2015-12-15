@@ -1,10 +1,10 @@
 var bodyParser = require('body-parser')
 ,   User       = require('../models/user')
 ,   jwt        = require('jsonwebtoken')
-,   config     = require('../../config');
+// ,   config     = require('../../config');
 
 //super secret for creating tokens
-var superSecret = config.secret;
+// var superSecret = config.secret;
 
 module.exports = function(app, express) {
 
@@ -170,7 +170,7 @@ module.exports = function(app, express) {
     });
 
   //on routes that end in /users/:user_id
-  api.Router.route('/users/:user_id')
+  apiRouter.route('/users/:user_id')
 
     //get the user with that id
     .get(function(req, res){
