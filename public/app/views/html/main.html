@@ -20,28 +20,37 @@
                     <img class="thumbnail" src="http://placehold.it/550x350">
                     <h5>Entertainment Terminal</h5>
                     <div class="pure-menu custom-restricted-width">
-    <ul class="pure-menu-list">
-        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Flickr</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Messenger</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a></li>
-        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Finance</a></li>
-        <li class="pure-menu-item pure-menu-has-children">
-            <a href="#" id="menuLink1" class="pure-menu-link">More</a>
-            <ul class="pure-menu-children">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Autos</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Flickr</a></li>
-                <li class="pure-menu-item pure-menu-has-children">
-                    <a href="#" id="menuLink1" class="pure-menu-link">Even More</a>
-                    <ul class="pure-menu-children">
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Foo</a></li>
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Bar</a></li>
-                        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Baz</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-</div>
+                        <ul class="pure-menu-list">
+                            <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Flickr</a>
+                            </li>
+                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Messenger</a>
+                            </li>
+                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Sports</a>
+                            </li>
+                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Finance</a>
+                            </li>
+                            <li class="pure-menu-item pure-menu-has-children">
+                                <a href="#" id="menuLink1" class="pure-menu-link">More</a>
+                                <ul class="pure-menu-children">
+                                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Autos</a>
+                                    </li>
+                                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Flickr</a>
+                                    </li>
+                                    <li class="pure-menu-item pure-menu-has-children">
+                                        <a href="#" id="menuLink1" class="pure-menu-link">Even More</a>
+                                        <ul class="pure-menu-children">
+                                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Foo</a>
+                                            </li>
+                                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Bar</a>
+                                            </li>
+                                            <li class="pure-menu-item"><a href="#" class="pure-menu-link">Baz</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="off-canvas-content" data-off-canvas-content>
@@ -59,8 +68,11 @@
                 </div>
                 <div ng-controller='moviesController as moviesCtrl' class="row small-up-2 medium-up-3 large-up-4">
                     <div class="column" ng-repeat="movie in moviesCtrl.movies">
-                      <a ng-href="{{movie.url}}"><img class="thumbnail" ng-src="{{movie.poster}}"></a>
-                      <a ng-href="{{movie.url}}"><p>{{movie.title}}</p></a>
+                        <a ng-href="{{movie.url}}"><img class="thumbnail" ng-src="{{movie.poster}}">
+                        </a>
+                        <a ng-href="{{movie.url}}">
+                            <p>{{movie.title}}</p>
+                        </a>
                     </div>
                 </div>
                 <hr>
@@ -73,35 +85,36 @@
         $(document).foundation();
         angular.module("moviesApp", []);
         angular.module("moviesApp")
-          .controller('moviesController', moviesControllerFunc)
-          .$inject = ['$http']
-        function moviesControllerFunc ($http){
-          var movieCtrl = this
-          movieCtrl.posters = []
-          movieCtrl.titles = []
-          movieCtrl.url = []
-          movieCtrl.movies = []
-          $http({
-            method: 'GET',
-            url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/0/6/all/all'
-          }).then(function successCallback(response) {
-              // this callback will be called asynchronously
-              // when the response is available
-              console.log(response);
-              for (var i = 0; i < response.data.results.length; i++) {
-                var object = {}
-                object.poster = response.data.results[i].poster_120x171;
-                object.title = response.data.results[i].title;
-                object.url = response.data.results[i].metacritic;
-                movieCtrl.movies.push(object);
-                console.log(movieCtrl.movies)
-                console.log(response.data.results[i].rating);
-                console.log(response.data.results[i].poster_120x171);
-              }
+            .controller('moviesController', moviesControllerFunc)
+            .$inject = ['$http']
+
+        function moviesControllerFunc($http) {
+            var movieCtrl = this
+            movieCtrl.posters = []
+            movieCtrl.titles = []
+            movieCtrl.url = []
+            movieCtrl.movies = []
+            $http({
+                method: 'GET',
+                url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/0/6/all/all'
+            }).then(function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+                console.log(response);
+                for (var i = 0; i < response.data.results.length; i++) {
+                    var object = {}
+                    object.poster = response.data.results[i].poster_120x171;
+                    object.title = response.data.results[i].title;
+                    object.url = response.data.results[i].metacritic;
+                    movieCtrl.movies.push(object);
+                    console.log(movieCtrl.movies)
+                    console.log(response.data.results[i].rating);
+                    console.log(response.data.results[i].poster_120x171);
+                }
 
             }, function errorCallback(response) {
-              // called asynchronously if an error occurs
-              // or server returns response with an error status.
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
             });
         }
     </script>
