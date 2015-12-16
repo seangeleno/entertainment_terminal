@@ -11,7 +11,7 @@ angular.module('app.routes', ['ngRoute'])
 
 		// login page
 		.when('/login', {
-			templateUrl : 'app/views/pages/login.html',
+			templateUrl : 'app/views/html/sign_in.html',
    			controller  : 'mainController',
     			controllerAs: 'login' //this is used in place of main controller
 		})
@@ -30,6 +30,5 @@ angular.module('app.routes', ['ngRoute'])
 		// page to edit a user
 
 
-	$locationProvider.html5Mode(true);
 
 });

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="A layout example that shows off a blog page with a list of posts.">
 
-    <title>Blog &ndash; Layout Examples &ndash; Pure</title>
+    <title> Entertainment Terminal</title>
 
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
@@ -28,7 +28,7 @@
                     </a>
                 </div>
             </div>
-            <img class="post-avatar" alt="Tilo Mitra&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">
+
             <h2 class="brand-tagline">This movie is awesome.</h2>
 
             <nav class="nav">
@@ -49,11 +49,13 @@
             <!-- A wrapper for all the blog posts -->
             <div class="posts">
                 <h1 class="content-subhead">Movie Information Goes Here</h1>
-
+                <div class="" ng-controller='moviesController as moviesCtrl'>
+                    <p ng-repeat="movie in moviesCtrl.movies"> {{ movie.overview }}</p>
+                </div>
                 <!-- A single blog post -->
                 <section class="post">
                     <header class="post-header">
-                        <img class="post-avatar" alt="Tilo Mitra&#x27;s avatar" height="48" width="48" src="img/common/tilo-avatar.png">
+
 
                         <h2 class="post-title">{{ Movie.title }}</h2>
 
@@ -61,9 +63,7 @@
                     </header>
 
                     <div class="post-description">
-                        <p>
-                            This is where we will put the description.
-                        </p>
+
                     </div>
                 </section>
             </div>
@@ -73,7 +73,7 @@
 
                 <section class="post">
                     <header class="post-header">
-                        <img class="post-avatar" alt="Eric Ferraiuolo&#x27;s avatar" height="48" width="48" src="img/common/ericf-avatar.png">
+
 
                         <h2 class="post-title">Links to Watch:</h2>
 
@@ -82,7 +82,7 @@
 
                     <div class="post-description">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                          Link 1 Link 2 Link 3 Link 4
                         </p>
                     </div>
                 </section>
@@ -115,24 +115,28 @@
         movieCtrl.posters = []
         movieCtrl.titles = []
         movieCtrl.url = []
+        movieCtrl.overview = []
         movieCtrl.movies = []
         $http({
             method: 'GET',
-            url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/0/1/all/all'
+            url: 'https://api-public.guidebox.com/v1.43/US/tseUZERaS53WSjkA1ATmxoj2JMtmQJ/movie/50362'
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
             console.log(response);
-            for (var i = 0; i < response.data.results.length; i++) {
+            // for (var i = 0; i < response.data.length; i++) {
                 var object = {}
-                object.poster = response.data.results[i].poster_120x171;
-                object.title = response.data.results[i].title;
-                object.url = response.data.results[i].metacritic;
+            //     object.poster = response.data.poster_120x171;
+            //     object.overview = response.data.overview;
+            //     object.title = response.data.title;
+            //     object.url = response.data.metacritic;
+                object.overview = response.data.overview;
                 movieCtrl.movies.push(object);
-                console.log(movieCtrl.movies)
-                console.log(response.data.results[i].rating);
-                console.log(response.data.results[i].poster_120x171);
-            }
+            //     console.log(movieCtrl.movies)
+                console.log(response.data.rating);
+                console.log(response.data.poster_120x171);
+                console.log(response.data.overview);
+            // }
 
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
