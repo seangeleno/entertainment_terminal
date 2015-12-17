@@ -29,7 +29,9 @@
                 </div>
             </div>
 
-            <h2 class="brand-tagline">This movie is awesome.</h2>
+            <div class="" ng-controller='moviesController as moviesCtrl'>
+              <h2 class="brand-tagline"  ng-repeat="movie in moviesCtrl.movies">{{movie.rating}}<br>{{movie.release_year  }}</h2>
+            </div>
 
             <nav class="nav">
                 <ul class="nav-list">
@@ -47,8 +49,8 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
             <!-- A wrapper for all the blog posts -->
-            <div class="posts">
-                <h1 class="content-subhead">Movie Information Goes Here</h1>
+            <div class="posts" ng-controller='moviesController as moviesCtrl'>
+                <h1 class="content-subhead" ng-repeat="movie in moviesCtrl.movies">Director: {{movie.directors}}<br>Writer: {{movie.writers}}<br>Cast: {{movie.cast}}</h1>
                 <div class="" ng-controller='moviesController as moviesCtrl'>
                     <p ng-repeat="movie in moviesCtrl.movies"> {{ movie.overview }}</p>
                 </div>
@@ -80,10 +82,13 @@
 
                     </header>
 
-                    <div class="post-description">
-                        <p>
-                          Link 1 Link 2 Link 3 Link 4
-                        </p>
+                    <div class="post-description" ng-controller='moviesController as moviesCtrl'>
+                      <!-- <a class="pure-button pure-button-primary" href="#">A Primary Button</a> -->
+                      <a ng-href="{{movie.link}}">Test link</a>
+                      <a ng-href="{{movie.link}}"><button class="pure-button pure-button-primary">Amazon</button></a>
+                      <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">Other</button>
+                      <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">HBO</button>
+                      <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">Hulu</button>
                     </div>
                 </section>
 
@@ -113,30 +118,51 @@
     function moviesControllerFunc($http) {
         var movieCtrl = this
         movieCtrl.posters = []
+        movieCtrl.release_year = []
+        movieCtrl.writers = []
+        movieCtrl.rating = []
+        movieCtrl.link = []
         movieCtrl.titles = []
         movieCtrl.url = []
+        movieCtrl.directors = []
         movieCtrl.overview = []
+        movieCtrl.cast = []
         movieCtrl.movies = []
+
         $http({
             method: 'GET',
-            url: 'https://api-public.guidebox.com/v1.43/US/tseUZERaS53WSjkA1ATmxoj2JMtmQJ/movie/50362'
+            url: 'https://api-public.guidebox.com/v1.43/US/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movie/50362'
         }).then(function successCallback(response) {
             // this callback will be called asynchronously
             // when the response is available
             console.log(response);
             // for (var i = 0; i < response.data.length; i++) {
                 var object = {}
-            //     object.poster = response.data.poster_120x171;
+                object.poster = response.data.poster_240x342;
+                object.directors = response.data.directors[0].name;
+                object.writers = response.data.writers[0].name;
+                object.cast = response.data.cast[0].name;
+
+                object.rating = response.data.rating;
+                object.release_year = response.data.release_year;
             //     object.overview = response.data.overview;
             //     object.title = response.data.title;
             //     object.url = response.data.metacritic;
                 object.overview = response.data.overview;
-                movieCtrl.movies.push(object);
-            //     console.log(movieCtrl.movies)
+                object.link = response.data.purchase_web_sources[1].link;
+
+                console.log(movieCtrl.movies)
                 console.log(response.data.rating);
-                console.log(response.data.poster_120x171);
-                console.log(response.data.overview);
-            // }
+                console.log(response.data.writers[0].name);
+                console.log(response.data.directors[0].name);
+                console.log(response.data.poster_240x342);
+                // console.log(response.data.overview);
+                console.log(response.data.release_year);
+            // // }
+
+
+                console.log(response.data.purchase_web_sources[1].link);
+
 
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
