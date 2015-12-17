@@ -44,7 +44,7 @@ app.use('/api', apiRoutes);
 //Send users to frontend
 //has to be registered after API routes
 app.get('/', function(req, res){ // any route that isn't API then load static index.html
-    res.sendFile(path.join(__dirname + '/public/app/views/html/landing_page.html'));
+    res.sendFile(path.join(__dirname + '/public/app/views/index.html'));
 });
 
 //SERVER STARTS HERE

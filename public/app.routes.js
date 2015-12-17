@@ -6,7 +6,7 @@ angular.module('app.routes', ['ngRoute'])
 
 		// route for the home page
 		.when('/', { //.when waits to hit a specific URL
-			templateUrl : 'app/views/pages/home.html'
+			templateUrl : 'app/views/html/landing_page.html'
 		})
 
 		// login page
