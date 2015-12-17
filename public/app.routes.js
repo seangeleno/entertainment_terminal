@@ -15,15 +15,20 @@ angular.module('app.routes', ['ngRoute'])
    			controller  : 'mainController',
     			controllerAs: 'login' //this is used in place of main controller
 		})
+		.when('/signup', {
+			templateUrl : 'app/views/html/sign_up.html',
+   			controller  : 'mainController',
+    			controllerAs: 'signup' //this is used for signup
+		})
 		.when('/movie', {
 			templateUrl : 'app/views/html/movie.html',
    			controller  : 'movieDetailsCtrl',
-    			controllerAs: 'movieDetails' //this is used in place of main controller
+    			controllerAs: 'movieDetails' //this is u
 		})
 		.when('/main', {
 			templateUrl : 'app/views/html/main.html',
    			controller  : 'movieCtrl',
-    		controllerAs: 'theMovieCtrl' //this is used in place of main controller
+    		controllerAs: 'theMovieCtrl' //this is
 		})
 
 		// show all users

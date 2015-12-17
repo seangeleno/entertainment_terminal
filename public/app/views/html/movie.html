@@ -7,20 +7,21 @@
 
     <title> Entertainment Terminal</title>
 
+    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
-    <link rel="stylesheet" href="../css/movie.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
 
 
 </head>
-<body ng-app="moviesApp">
+<body ng-app="moviesApp" ng-controller='movieDetailsCtrl as movieDetails'>
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
             <h1 class="brand-title">Movie Poster Goes Here</h1>
-            <div ng-controller='moviesController as moviesCtrl'>
-                <div class="column" ng-repeat="movie in moviesCtrl.movies">
+            <div >
+                <div class="column" ng-repeat="movie in movieDetailsCtrl.movies">
                     <a ng-href="{{movie.url}}"><img class="thumbnail" ng-src="{{movie.poster}}">
                     </a>
                     <a ng-href="{{movie.url}}">
@@ -29,8 +30,8 @@
                 </div>
             </div>
 
-            <div class="" ng-controller='moviesController as moviesCtrl'>
-              <h2 class="brand-tagline"  ng-repeat="movie in moviesCtrl.movies">{{movie.rating}}<br>{{movie.release_year  }}</h2>
+            <div class="" >
+              <h2 class="brand-tagline"  ng-repeat="movie in movieDetailsCtrl.movies">{{movie.rating}}<br>{{movie.release_year  }}</h2>
             </div>
 
             <nav class="nav">
@@ -49,10 +50,10 @@
     <div class="content pure-u-1 pure-u-md-3-4">
         <div>
             <!-- A wrapper for all the blog posts -->
-            <div class="posts" ng-controller='moviesController as moviesCtrl'>
-                <h1 class="content-subhead" ng-repeat="movie in moviesCtrl.movies">Director: {{movie.directors}}<br>Writer: {{movie.writers}}<br>Cast: {{movie.cast}}</h1>
-                <div class="" ng-controller='moviesController as moviesCtrl'>
-                    <p ng-repeat="movie in moviesCtrl.movies"> {{ movie.overview }}</p>
+            <div class="posts" >
+                <h1 class="content-subhead" ng-repeat="movie in movieDetailsCtrl.movies">Director: {{movie.directors}}<br>Writer: {{movie.writers}}<br>Cast: {{movie.cast}}</h1>
+                <div class="">
+                    <p ng-repeat="movie in movieDetailsCtrl.movies"> {{ movie.overview }}</p>
                 </div>
                 <!-- A single blog post -->
                 <section class="post">
@@ -82,7 +83,7 @@
 
                     </header>
 
-                    <div class="post-description" ng-controller='moviesController as moviesCtrl'>
+                    <div class="post-description">
                       <!-- <a class="pure-button pure-button-primary" href="#">A Primary Button</a> -->
                       <a ng-href="{{movie.link}}">Test link</a>
                       <a ng-href="{{movie.link}}"><button class="pure-button pure-button-primary">Amazon</button></a>
@@ -106,69 +107,3 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
-<script>
-    $(document).foundation();
-    angular.module("moviesApp", []);
-    angular.module("moviesApp")
-        .controller('moviesController', moviesControllerFunc)
-        .$inject = ['$http']
-
-    function moviesControllerFunc($http) {
-        var movieCtrl = this
-        movieCtrl.posters = []
-        movieCtrl.release_year = []
-        movieCtrl.writers = []
-        movieCtrl.rating = []
-        movieCtrl.link = []
-        movieCtrl.titles = []
-        movieCtrl.url = []
-        movieCtrl.directors = []
-        movieCtrl.overview = []
-        movieCtrl.cast = []
-        movieCtrl.movies = []
-
-        $http({
-            method: 'GET',
-            url: 'https://api-public.guidebox.com/v1.43/US/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movie/50362'
-        }).then(function successCallback(response) {
-            // this callback will be called asynchronously
-            // when the response is available
-            console.log(response);
-            // for (var i = 0; i < response.data.length; i++) {
-                var object = {}
-                object.poster = response.data.poster_240x342;
-                object.directors = response.data.directors[0].name;
-                object.writers = response.data.writers[0].name;
-                object.cast = response.data.cast[0].name;
-
-                object.rating = response.data.rating;
-                object.release_year = response.data.release_year;
-            //     object.overview = response.data.overview;
-            //     object.title = response.data.title;
-            //     object.url = response.data.metacritic;
-                object.overview = response.data.overview;
-                object.link = response.data.purchase_web_sources[1].link;
-
-                console.log(movieCtrl.movies)
-                console.log(response.data.rating);
-                console.log(response.data.writers[0].name);
-                console.log(response.data.directors[0].name);
-                console.log(response.data.poster_240x342);
-                // console.log(response.data.overview);
-                console.log(response.data.release_year);
-            // // }
-
-
-                console.log(response.data.purchase_web_sources[1].link);
-
-
-        }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-    }
-</script>
-</body>
-</html>
