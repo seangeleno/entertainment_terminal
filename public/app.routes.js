@@ -15,6 +15,11 @@ angular.module('app.routes', ['ngRoute'])
    			controller  : 'mainController',
     			controllerAs: 'login' //this is used in place of main controller
 		})
+		.when('/main', {
+			templateUrl : 'app/views/html/main.html',
+   			controller  : 'moviesController',
+    			controllerAs: 'movie' //this is used in place of main controller
+		})
 
 		// show all users
 		.when('/users', {
