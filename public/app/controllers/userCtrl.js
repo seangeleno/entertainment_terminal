@@ -5,7 +5,7 @@ angular.module('userCtrl', ['userService'])
   var userCtrl = this;
 
   //set a processing variable to show loading things
-  userCtrl = true;
+  userCtrl.processing = true;
 
   //grab all the users at page load
   User.all()
@@ -59,7 +59,7 @@ angular.module('userCtrl', ['userService'])
       userCtrl.userData = {};
       userCtrl.message = data.message;
     });
-  }
+  };
 })
 
 //controller applied to the user edit page

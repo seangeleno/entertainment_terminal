@@ -24,7 +24,7 @@ module.exports = function(app, express) {
         sampleUser.first_name = 'test';
         sampleUser.last_name = 'test';
         sampleUser.username = 'test';
-        sampleUser.email = 'test';
+        sampleUser.email = 'test@test';
         sampleUser.password = 'test';
 
         sampleUser.save();
