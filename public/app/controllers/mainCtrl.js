@@ -30,8 +30,9 @@ angular.module('mainCtrl', [])
 
       //if a user successfully logs in, redirect to the page
       Auth.login(mainCtrl.loginData.username, mainCtrl.loginData.password)
-        .success(function(){
+        .success(function(data){
           mainCtrl.processing = false
+
           if ( data.success ){
             $location.path('/users')
           }

@@ -29,6 +29,6 @@ angular.module('userService', [])
     };
 
     // return our entire userFactory object
-    return usereFactory;
+    return userFactory;
 
   })
