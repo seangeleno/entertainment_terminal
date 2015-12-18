@@ -24,7 +24,6 @@
     "jsonwebtoken": "^5.4.1",
     "mongoose": "^4.3.1",
     "morgan": "^1.6.1",
-    "path": "^0.12.7",
-    "rotten-api": "0.0.2"
+    "path": "^0.12.7"
   }
 }
