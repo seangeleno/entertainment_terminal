@@ -18,15 +18,15 @@
                 </div>
                 <div class="callout primary">
                     <div class="row column">
-                        <h1>Fulfill all your digital video consumption needs right here.</h1>
-                        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra. Nulla fringilla.</p>
+                        <h1>Fulfill all your digital video consumption needs.</h1>
+                        <p class="lead">Find the top 250 movies being searched on the internet right now.</p>
                     </div>
                 </div>
                 <div  class="row small-up-2 medium-up-3 large-up-4">
                     <div class="column" ng-repeat="movie in theMovieCtrl.movies">
                         <a ng-click="theMovieCtrl.showMovie(movie.id)"><img class="thumbnail" ng-src="{{movie.poster}}">
-                        </a>
-                        <a ng-href="{{movie.url}}">
+                        <!-- </a>
+                        <a ng-href="{{movie.url}}"> -->
                             <p>{{movie.title}}</p>
                         </a>
                     </div>
