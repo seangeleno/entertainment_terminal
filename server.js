@@ -3,7 +3,6 @@ var express       = require('express') //this calls express
 ,   bodyParser    = require('body-parser')
 ,   morgan        = require('morgan') //used to see requests
 ,   mongoose      = require('mongoose') //provides Schemas and Active Record
-// ,   rotten        = require('rotten-api')("YOU_API_KEY")
 ,   port          = process.env.PORT || 3000
 ,   path          = require('path')
 ,   db            = 'mongodb://localhost/et';
