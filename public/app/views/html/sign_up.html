@@ -1,29 +1,32 @@
   <div class="pure-g">
-    <div class="pure-u-1-6"><p></p></div>
-    <div class="pure-u-1-6"><p></p></div>
-    <div class="pure-u-1-6"><p><form class="pure-form pure-form-stacked">
+    <div class="pure-u-1-6"></div>
+    <div class="pure-u-1-6"></div>
+    <div class="pure-u-1-6">
+      <form class="pure-form pure-form-stacked" ng-submit="user.saveUser()">
       <fieldset>
         <legend>Sign-up Form</legend>
 
         <label for="first_name">First Name</label>
-        <input id="first_name" type="text" placeholder="First Name">
+        <input id="first_name" type="text" placeholder="First Name" ng-model="user.userData.first_name">
 
         <label for="last_name">Last Name</label>
-        <input id="last_name" type="text" placeholder="Last Name">
+        <input id="last_name" type="text" placeholder="Last Name" ng-model="user.userData.last_name">
 
         <label for="username">username</label>
-        <input id="username" type="text" placeholder="Username">
+        <input id="username" type="text" placeholder="Username" ng-model="user.userData.username">
 
         <label for="email">Email</label>
-        <input id="email" type="email" placeholder="Email">
+        <input id="email" type="email" placeholder="Email" ng-model="user.userData.email">
 
         <label for="password">Password</label>
-        <input id="password" type="password" placeholder="Password">
+        <input id="password" type="password" placeholder="Password" ng-model="user.userData.password">
 
-        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+        <button type="submit" class="pure-button pure-button-primary" ng-if="user.type == 'create'">Sign in</button>
       </fieldset>
-    </form></p></div>
-    <div class="pure-u-1-6"><p></p></div>
-    <div class="pure-u-1-6"><p></p></div>
+    </form>
+
+  </div>
+    <div class="pure-u-1-6"></div>
+    <div class="pure-u-1-6"></div>
 
   </div>

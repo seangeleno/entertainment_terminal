@@ -20,10 +20,10 @@ angular.module('app.routes', ['ngRoute'])
    			controller  : 'mainController',
     			controllerAs: 'signup' //this is used for signup
 		})
-		.when('/movie', {
+		.when('/movie/:id', {
 			templateUrl : 'app/views/html/movie.html',
-   			controller  : 'movieDetailsCtrl',
-    			controllerAs: 'movieDetails' //this is u
+   			controller  : 'oneMovieCtrl',
+    			controllerAs: 'oneMovieCtrl' //this is u
 		})
 		.when('/main', {
 			templateUrl : 'app/views/html/main.html',

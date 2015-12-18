@@ -1,37 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="A layout example that shows off a blog page with a list of posts.">
-
-    <title> Entertainment Terminal</title>
-
-    <link rel="stylesheet" href="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.js"></script>
-
-
-</head>
-<body ng-app="moviesApp" ng-controller='movieDetailsCtrl as movieDetails'>
+<!-- {{oneMovieCtrl.movie}} -->
 <div id="layout" class="pure-g">
     <div class="sidebar pure-u-1 pure-u-md-1-4">
         <div class="header">
-            <h1 class="brand-title">Movie Poster Goes Here</h1>
             <div >
-                <div class="column" ng-repeat="movie in movieDetailsCtrl.movies">
-                    <a ng-href="{{movie.url}}"><img class="thumbnail" ng-src="{{movie.poster}}">
+                <div class="column">
+                    <a ng-href="{{oneMovieCtrl.movie.url}}"><img class="thumbnail" ng-src="{{oneMovieCtrl.movie.poster}}">
                     </a>
-                    <a ng-href="{{movie.url}}">
-                        <p>{{movie.title}}</p>
+                    <a ng-href="{{oneMovieCtrlmovie.url}}">
+                        <p>{{oneMovieCtrlmovie.title}}</p>
                     </a>
                 </div>
             </div>
 
             <div class="" >
-              <h2 class="brand-tagline"  ng-repeat="movie in movieDetailsCtrl.movies">{{movie.rating}}<br>{{movie.release_year  }}</h2>
+              <h2 class="brand-tagline">{{oneMovieCtrl.movie.rating}}<br>{{oneMovieCtrl.movie.release_year  }}</h2>
             </div>
 
             <nav class="nav">
@@ -51,16 +33,16 @@
         <div>
             <!-- A wrapper for all the blog posts -->
             <div class="posts" >
-                <h1 class="content-subhead" ng-repeat="movie in movieDetailsCtrl.movies">Director: {{movie.directors}}<br>Writer: {{movie.writers}}<br>Cast: {{movie.cast}}</h1>
+                <h1 class="content-subhead">Director: {{oneMovieCtrl.movie.directors}}<br>Writer: {{oneMovieCtrl.movie.writers}}<br>Cast: {{oneMovieCtrl.movie.cast}}</h1>
                 <div class="">
-                    <p ng-repeat="movie in movieDetailsCtrl.movies"> {{ movie.overview }}</p>
+                    <p> {{ oneMovieCtrl.movie.overview }}</p>
                 </div>
                 <!-- A single blog post -->
                 <section class="post">
                     <header class="post-header">
 
 
-                        <h2 class="post-title">{{ Movie.title }}</h2>
+                        <h2 class="post-title">{{ oneMovieCtrl.movie.title }}</h2>
 
 
                     </header>
@@ -85,8 +67,8 @@
 
                     <div class="post-description">
                       <!-- <a class="pure-button pure-button-primary" href="#">A Primary Button</a> -->
-                      <a ng-href="{{movie.link}}">Test link</a>
-                      <a ng-href="{{movie.link}}"><button class="pure-button pure-button-primary">Amazon</button></a>
+                      <a ng-href="{{oneMovieCtrl.movie.link}}">Test link</a>
+                      <a ng-href="{{oneMovieCtrl.movie.link}}"><button class="pure-button pure-button-primary">Amazon</button></a>
                       <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">Other</button>
                       <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">HBO</button>
                       <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">Hulu</button>

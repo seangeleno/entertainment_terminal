@@ -55,7 +55,7 @@
                 </div>
                 <div  class="row small-up-2 medium-up-3 large-up-4">
                     <div class="column" ng-repeat="movie in theMovieCtrl.movies">
-                        <a ng-href="{{movie.url}}"><img class="thumbnail" ng-src="{{movie.poster}}">
+                        <a ng-click="theMovieCtrl.showMovie(movie.id)"><img class="thumbnail" ng-src="{{movie.poster}}">
                         </a>
                         <a ng-href="{{movie.url}}">
                             <p>{{movie.title}}</p>
