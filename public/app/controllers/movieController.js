@@ -14,7 +14,9 @@ angular.module('movieCtrl', [])
       self.cast = []
       self.writers = []
       self.rating = {}
-      self.link = {}
+      self.itunes = {}
+      self.amazon = {}
+      self.facebook = {}
       self.movie = {}
 
       //show page
@@ -22,7 +24,7 @@ angular.module('movieCtrl', [])
 
       $http({
           method: 'GET',
-          url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/0/6/all/all'
+          url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/0/250/all/all'
       }).then(function successCallback(response) {
           // this callback will be called asynchronously
           // when the response is available
@@ -73,7 +75,9 @@ angular.module('movieCtrl', [])
       movieObject.cast = response.data.cast[0].name;
       movieObject.directors = response.data.directors[0].name;
       movieObject.writers = response.data.writers[0].name;
-      movieObject.link = response.data.purchase_web_sources[0].link;
+      movieObject.itunes = response.data.purchase_web_sources[0].link;
+      movieObject.amazon = response.data.purchase_web_sources[1].link;
+      movieObject.facebook = response.data.social.facebook.link;
       for (var i = 0; i < response.data.length; i++) {
           console.log(self.movies)
           console.log(response.data.rating);

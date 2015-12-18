@@ -13,19 +13,10 @@
             </div>
 
             <div class="" >
-              <h2 class="brand-tagline">{{oneMovieCtrl.movie.rating}}<br>{{oneMovieCtrl.movie.release_year  }}</h2>
+              <h2 class="brand-tagline">Rated {{oneMovieCtrl.movie.rating}}<br>{{oneMovieCtrl.movie.release_year  }}</h2>
             </div>
 
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li class="nav-item">
-                        <a class="pure-button" href="http://purecss.io">Movie Trailer 1</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="pure-button" href="http://yuilibrary.com">Movie Trailer 2</a>
-                    </li>
-                </ul>
-            </nav>
+
         </div>
     </div>
 
@@ -34,7 +25,9 @@
             <!-- A wrapper for all the blog posts -->
             <div class="posts" >
                 <h1 class="content-subhead">Director: {{oneMovieCtrl.movie.directors}}<br>Writer: {{oneMovieCtrl.movie.writers}}<br>Cast: {{oneMovieCtrl.movie.cast}}</h1>
+                <a ng-href="{{oneMovieCtrl.movie.facebook}}"<p>Facebook</p></a>
                 <div class="">
+                    <h4><strong>Synopsis</strong></h4>
                     <p> {{ oneMovieCtrl.movie.overview }}</p>
                 </div>
                 <!-- A single blog post -->
@@ -60,18 +53,14 @@
                     <header class="post-header">
 
 
-                        <h2 class="post-title">Links to Watch:</h2>
+                        <h2 class="post-title">Watch on iTunes now:</h2>
 
 
                     </header>
 
                     <div class="post-description">
                       <!-- <a class="pure-button pure-button-primary" href="#">A Primary Button</a> -->
-                      <a ng-href="{{oneMovieCtrl.movie.link}}">Test link</a>
-                      <a ng-href="{{oneMovieCtrl.movie.link}}"><button class="pure-button pure-button-primary">Amazon</button></a>
-                      <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">Other</button>
-                      <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">HBO</button>
-                      <button class="pure-button pure-button-primary" ng-href="{{movie.url}}">Hulu</button>
+                      <a ng-href="{{oneMovieCtrl.movie.itunes}}"><button class="pure-button pure-button-primary">iTunes</button></a>
                     </div>
                 </section>
 
