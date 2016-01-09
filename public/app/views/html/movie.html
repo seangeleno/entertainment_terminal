@@ -53,14 +53,18 @@
                     <header class="post-header">
 
 
-                        <h2 class="post-title">Watch on iTunes now:</h2>
+                        <h2 class="post-title">Watch this movie at these sources:</h2>
 
 
                     </header>
 
                     <div class="post-description">
                       <!-- <a class="pure-button pure-button-primary" href="#">A Primary Button</a> -->
-                      <a ng-href="{{oneMovieCtrl.movie.itunes}}"><button class="pure-button pure-button-primary">iTunes</button></a>
+                      <a ng-href="{{oneMovieCtrl.movie.firstLink}}"><button class="pure-button pure-button-primary">{{ oneMovieCtrl.movie.firstLinkName }}</button></a>
+                      <a ng-href="{{oneMovieCtrl.movie.secondLink}}"><button class="pure-button pure-button-primary">{{ oneMovieCtrl.movie.secondLinkName }}</button></a>
+                      <a ng-href="{{oneMovieCtrl.movie.thirdLink}}"><button class="pure-button pure-button-primary">{{ oneMovieCtrl.movie.thirdLinkName }}</button></a>
+                      <a ng-href="{{oneMovieCtrl.movie.fourthLink}}"><button class="pure-button pure-button-primary">{{ oneMovieCtrl.movie.fourthLinkName }}</button></a>
+                      <a ng-href="{{oneMovieCtrl.movie.fifthLink}}"><button class="pure-button pure-button-primary">{{ oneMovieCtrl.movie.fifthLinkName }}</button></a>
                     </div>
                 </section>
 

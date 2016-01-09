@@ -224,6 +224,11 @@ a.pure-button-primary {
     background: #111;
 }
 
+.footer_landing {
+  background: #111;
+}
+
+
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  * On tablets and other medium-sized devices, we want to customize some

@@ -48,12 +48,17 @@
 <div>
   <div class="header">
       <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
-          <a class="pure-menu-heading" href="">General Assembly WDI 19 Project IV</a>
+          <a class="pure-menu-heading" href="/#/">General Assembly WDI 19 Project IV</a>
 
           <ul class="pure-menu-list">
               <li class="pure-menu-item pure-menu-selected"><a href="/#/" class="pure-menu-link">Home</a></li>
-              <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li>
-              <li class="pure-menu-item"><a href="#login" class="pure-menu-link">login</a></li>
+              <!-- <li class="pure-menu-item"><a href="#" class="pure-menu-link">Settings</a></li> -->
+              <li class="pure-menu-item pure-menu-selected" ng-if="main.loggedIn"><a ng-href="/users/{{main.user.id}}">Settings</a></li>
+              <li class="pure-menu-item pure-menu-selected" ng-if="!main.loggedIn"><a href="/#signup">Signup</a></li>
+              <li class="pure-menu-item pure-menu-selected" ng-if="!main.loggedIn"><a href="/#login">Login</a></li>
+              <li class="pure-menu-item pure-menu-selected" ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
+
+              <!-- <li class="pure-menu-item"><a href="#login" class="pure-menu-link">Login</a></li> -->
           </ul>
       </div>
   </div>

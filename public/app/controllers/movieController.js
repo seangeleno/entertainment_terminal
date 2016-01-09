@@ -68,6 +68,7 @@ angular.module('movieCtrl', [])
       // when the response is available
       console.log(response);
       var movieObject = {}
+      //Movie information
       movieObject.poster = response.data.poster_240x342;
       movieObject.rating = response.data.rating;
       movieObject.release_year = response.data.release_year;
@@ -75,8 +76,18 @@ angular.module('movieCtrl', [])
       movieObject.cast = response.data.cast[0].name;
       movieObject.directors = response.data.directors[0].name;
       movieObject.writers = response.data.writers[0].name;
-      movieObject.itunes = response.data.purchase_web_sources[0].link;
-      movieObject.amazon = response.data.purchase_web_sources[1].link;
+      //Links to purchase
+      movieObject.firstLink = response.data.purchase_web_sources[0].link;
+      movieObject.firstLinkName = response.data.purchase_web_sources[0].display_name;
+      movieObject.secondLink = response.data.purchase_web_sources[1].link;
+      movieObject.secondLinkName = response.data.purchase_web_sources[1].display_name;
+      movieObject.thirdLink = response.data.purchase_web_sources[2].link;
+      movieObject.thirdLinkName = response.data.purchase_web_sources[2].display_name;
+      movieObject.fourthLink = response.data.purchase_web_sources[3].link;
+      movieObject.fourthLinkName = response.data.purchase_web_sources[3].display_name;
+      movieObject.fifthLink = response.data.purchase_web_sources[4].link;
+      movieObject.fifthLinkName = response.data.purchase_web_sources[4].display_name;
+
       movieObject.facebook = response.data.social.facebook.link;
       for (var i = 0; i < response.data.length; i++) {
           console.log(self.movies)
@@ -86,7 +97,10 @@ angular.module('movieCtrl', [])
           console.log(response.data.poster_240x342);
           // console.log(response.data.overview);
           console.log(response.data.release_year);
+          console.log(response.data.purchase_web_sources[i].display_name);
+          console.log(response.data.purchase_web_sources[i].display_name);
       }
+      console.log(response.data.release_year);
       self.movie = (movieObject);
       // $location = "/#/movie"
 
