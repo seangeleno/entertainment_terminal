@@ -6,7 +6,7 @@ var express       = require('express') //this calls express
 // ,   rotten        = require('rotten-api')("YOU_API_KEY")
 ,   port          = process.env.PORT || 3000
 ,   path          = require('path')
-,   db            = 'mongodb://localhost/et';
+,   db            = 'mongodb://et_admin:generalassembly@ds029595.mongolab.com:29595/entertainment_terminal';
 
 // App Configuration goes here!
 // use body parser so we can grab information from POST requests
