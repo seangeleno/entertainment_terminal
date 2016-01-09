@@ -24,6 +24,7 @@
         <div>
             <!-- A wrapper for all the blog posts -->
             <div class="posts" >
+              <h2 class="post-title">{{ oneMovieCtrl.movie.title }}</h2>
                 <h1 class="content-subhead">Director: {{oneMovieCtrl.movie.directors}}<br>Writer: {{oneMovieCtrl.movie.writers}}<br>Cast: {{oneMovieCtrl.movie.cast}}</h1>
                 <a ng-href="{{oneMovieCtrl.movie.facebook}}"<p>Facebook</p></a>
                 <div class="">
@@ -34,8 +35,8 @@
                 <section class="post">
                     <header class="post-header">
 
+                      <h3><a ng-href="{{ oneMovieCtrl.movie.trailer }}">Watch Trailer Here</a></h3>
 
-                        <h2 class="post-title">{{ oneMovieCtrl.movie.title }}</h2>
 
 
                     </header>

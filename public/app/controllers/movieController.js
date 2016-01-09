@@ -70,6 +70,7 @@ angular.module('movieCtrl', [])
       var movieObject = {}
       //Movie information
       movieObject.poster = response.data.poster_240x342;
+      movieObject.title = response.data.title;
       movieObject.rating = response.data.rating;
       movieObject.release_year = response.data.release_year;
       movieObject.overview = response.data.overview;
@@ -87,6 +88,9 @@ angular.module('movieCtrl', [])
       movieObject.fourthLinkName = response.data.purchase_web_sources[3].display_name;
       movieObject.fifthLink = response.data.purchase_web_sources[4].link;
       movieObject.fifthLinkName = response.data.purchase_web_sources[4].display_name;
+
+      //trailers
+      movieObject.trailer = response.data.trailers.web[0].embed;
 
       movieObject.facebook = response.data.social.facebook.link;
       for (var i = 0; i < response.data.length; i++) {
