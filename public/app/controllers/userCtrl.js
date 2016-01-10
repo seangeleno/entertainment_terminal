@@ -63,14 +63,14 @@ angular.module('userCtrl', ['userService'])
 						vm.userData = {};
 						// if a user successfully logs in, redirect to users page
 						if (data.success)
-							$location.path('/items');
+							$location.path('/main');
 						else
 							vm.error = data.message;
 
 					});
 			});
 
-			// $location.path('/items');
+			// $location.path('/main');
 
 	};
 
