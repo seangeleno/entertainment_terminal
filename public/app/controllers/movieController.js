@@ -24,7 +24,7 @@ angular.module('movieCtrl', [])
 
       $http({
           method: 'GET',
-          url: 'http://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/0/250/all/all'
+          url: 'https://api-public.guidebox.com/v1.43/all/rKsjr4MNd2bNG2EcYfsk2AgRo23BwZYT/movies/all/0/250/all/all'
       }).then(function successCallback(response) {
           // this callback will be called asynchronously
           // when the response is available
