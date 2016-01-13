@@ -16,7 +16,7 @@ angular.module('movieCtrl', [])
       self.rating = {}
       self.itunes = {}
       self.amazon = {}
-      self.facebook = {}
+      // self.facebook = {}
       self.movie = {}
 
       //show page
@@ -90,7 +90,7 @@ angular.module('movieCtrl', [])
       movieObject.fifthLinkName = response.data.purchase_web_sources[4].display_name;
 
 
-      movieObject.facebook = response.data.social.facebook.link;
+      // movieObject.facebook = response.data.social.facebook.link;
       for (var i = 0; i < response.data.length; i++) {
           console.log(self.movies)
           console.log(response.data.rating);
