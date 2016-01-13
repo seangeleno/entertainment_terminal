@@ -89,8 +89,6 @@ angular.module('movieCtrl', [])
       movieObject.fifthLink = response.data.purchase_web_sources[4].link;
       movieObject.fifthLinkName = response.data.purchase_web_sources[4].display_name;
 
-      //trailers
-      // movieObject.trailer = response.data.trailers.web[0].embed;
 
       movieObject.facebook = response.data.social.facebook.link;
       for (var i = 0; i < response.data.length; i++) {
