@@ -132,7 +132,8 @@ a.pure-button-primary {
  */
 
 .splash-container {
-    background-image: url("http://www.intuoz.com.au/wp-content/uploads/2015/05/Movie-Young-people-sitting-in-multip-465638981.jpg");
+    background-image: url("http://i.imgur.com/82bQjX6.jpg");
+    background-repeat: no-repeat;
     z-index: 1;
     overflow: hidden;
     /* The following styles are required for the "scroll-over" effect */
